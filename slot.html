@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slot Test</title>
+  <style>
+    #app {
+      width: 100%;
+      height: 400px;
+      background-color: #ee7e8a;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <me-component>
+      <header slot="slot-header">我是头部！</header>
+      <!-- <footer slot="slot-footer">我是尾部！</footer> -->
+    </me-component>
+  </div>
+
+  <script src="./js/vue.min.js"></script>
+  <script>
+    Vue.component('me-component', {
+      template: `<div>
+                  <slot name="slot-footer">我是默认值</slot>
+                  <p>你好！</p>
+                  <slot name="slot-header"></slot>
+                </div>`
+    })
+    var vm = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slice/splice</title>
+</head>
+<body>
+  <script>
+    var arr = [1, 2, 3, 4];
+    arr.slice(1);
+    console.log(arr.slice(1, 2)); // 数组截取 不改变数组 返回新数组 可为负数
+
+    var arr1 = [7, 8, 9, 10];
+    arr1.splice(1, 0, 55, 66, 99);
+    console.log(arr1); // 数组添加删除 改变数组 
+    
+    
+  </script>
+</body>
+</html>

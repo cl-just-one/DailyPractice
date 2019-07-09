@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function aaa(s) {
+      var arr = []
+      for(var i = 0; i < s.length; i++) {
+          var a1 = s.charAt(i);
+          for(var j = i + 1; j < s.length; j++) {
+              var a2 = s.charAt(j);
+              var tmp = s.slice(i, j);
+              if (arr.indexOf(tmp) != -1 == a2) {
+                  arr.push(tmp.length)
+                  break;
+              }
+              if (j == s.length - 1) {
+                var tmp = s.slice(i);
+                arr.push(tmp.length)
+              }
+          }
+      }
+      var Max = 0;
+      for (var k = 0; k < arr.length; k++) {
+        if (arr[k] > Max) {
+          Max = arr[k]
+        }
+      }
+      return Max;
+    };
+    console.log("-======================", aaa("abcabcbb"))
+  </script>
+</body>
+</html>

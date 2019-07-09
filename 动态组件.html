@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动态组件</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="app">
+    <component :is="currentView"></component>
+    <button @click="changeComponent('comA')">组件A</button>
+    <button @click="changeComponent('comB')">组件B</button>
+    <button @click="changeComponent('comC')">组件C</button>
+  </div>
+  <script src="./js/vue.min.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      components: {
+        comA: {
+          template: `
+          <div>组件A</div>
+          `
+        },
+        comB: {
+          template: `
+          <div>组件B</div>
+          `
+        },
+        comC: {
+          template: `
+          <div>组件C</div>
+          `
+        }
+      },
+      data: {
+        currentView: "comA"
+      },
+      methods: {
+        changeComponent (val) {
+          this.currentView = val;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

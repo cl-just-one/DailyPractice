@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组去重</title>
+</head>
+<body>
+  <script>
+    var arr = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+
+    // 双层循环去重
+    function unique (arr) {
+      var tmpArr = []
+      for (var i = 0, arrLen = arr.length; i < arrLen; i++) {
+        for (var j = 0; j < tmpArr.length; j++) {
+          if (arr[i] === tmpArr[j]) {
+            break;
+          }
+        }
+        if (j === tmpArr.length) {
+          tmpArr.push(arr[i]);
+        }
+      }
+      return tmpArr;
+    }
+    console.log("1.---" + unique(arr));
+
+    // indexOf去重
+    function unique1 (arr) {
+      var tmpArr = []
+      for (var i = 0, arrLen = arr.length; i < arrLen; i++) {
+        if (tmpArr.indexOf(arr[i]) === -1) {
+          tmpArr.push(arr[i]);
+        }
+      }
+      return tmpArr;
+    }
+    console.log("2.---" + unique1(arr));
+
+    // 排序后去重
+    function unique2 (arr) {
+      var sortArr = arr.sort()
+      var seen
+      var res = []
+      for (var i = 0, arrLen = sortArr.length; i < arrLen; i++) {
+        if (!i || seen !== sortArr[i]) {
+          res.push(sortArr[i])
+        }
+        seen = sortArr[i]
+      }
+      return res;
+    }
+    console.log("3.---" + unique2(arr));
+
+    var arr1 = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+    // filter简化外层循环indexOf去重
+    function unique3 (arr) {
+      var res = arr.filter(function(item, index, arr) {
+        return arr.indexOf(item) === index
+      })
+      return res
+    }
+    console.log("4.---" + unique3(arr1));
+
+    // filter简化外层循环排序去重
+    function unique4 (arr) {
+      var res = arr.concat().sort().filter(function(item, index, arr) {
+        return !index || item !== arr[index - 1]
+      })
+      return res
+    }
+    console.log("5.---" + unique4(arr1));
+
+    var arr2 = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+    // ES6方法Set去重
+    function unique5 (arr2) {
+      return Array.from(new Set(arr2));
+    }
+    console.log("6.---" + unique5(arr));
+
+    var arr3 = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+    // ES6方法Set去重 --- 简化版1
+    function unique5 (arr3) {
+      return [...new Set(arr3)];
+    }
+    console.log("7.---" + unique5(arr3));
+
+    var arr3 = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+    // ES6方法Set去重 --- 简化版2
+    function unique8(arr3) {
+      var res = (arr3) => [...new Set(arr3)] //--- 可能需要编译
+      return res
+    }
+    console.log("8.---" + unique8(arr3));
+
+    var arr4 = [2, 7, 1, 8, 9, 1, 6, '15', 78, '15', 2];
+    // ES6方法Map去重
+    function unique9 (arr4) {
+      const seen = new Map()
+      return arr4.filter((a) => !seen.has(a) && seen.set(a, '1'))
+    }
+    console.log("9.---" + unique9(arr4));
+
+  </script>
+</body>
+</html>

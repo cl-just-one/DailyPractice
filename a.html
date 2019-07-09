@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应</title>
+  <style>
+    .container {
+      display: flex;
+    }
+    .left {
+      background-color: aqua;
+      height: 200px;
+      flex: 1;
+    }
+    .right {
+      background-color: blue;
+      height: 200px;
+      width: 100px;
+    }
+
+    .container1 > div {
+      height: 400px;
+    }
+    .left1 {
+      float: right;
+      width: 100px;
+      background-color: blueviolet;
+    }
+    .right1 {
+      margin-right: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <!-- // 方法一 右边宽度固定，左边自适应
+  <div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+  // 方法二 右边宽度固定，左边自适应
+  <div class="container1">
+    <div class="left1"></div>
+    <div class="right1"></div>
+  </div>
+  <script>
+    function foo () {
+      console.log(this);
+    }
+    // new foo();
+    // foo();
+    var a = new foo();
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>深拷贝</title>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js"></script>
+</head>
+
+<body>
+  <script>
+    console.log("-------------------newObj = obj----------------------------");
+
+    var obj = { a: 10, b: 20 };
+    var newObj = { a: obj.a, b: obj.b };
+
+    // obj.a = 1000;
+    newObj.b = 100;
+
+    console.log(obj);    // { a: 10, b: 20}
+    console.log(newObj);    //  { a: 10, b: 100};
+    console.log(obj == newObj);    //  false
+    console.log(obj === newObj);    //  false
+
+    console.log("----------------Object.assign()---------------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = Object.assign({}, obj);
+
+    // obj.a.a = "ppppp"
+    newObj.b = 100;
+
+    console.log(obj);    //  { a: "hello", b: 33 };
+    console.log(newObj);    //  { a: "hello", b: 100 };
+    console.log(obj == newObj);   //  false
+    console.log(obj === newObj);  //  false
+
+    console.log("------------------JSON.stringify()------------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = JSON.parse(JSON.stringify(obj));
+
+    // newObj.a.a = "hello world";
+    newObj.b = 666;
+
+    console.log(obj);    //  { a: "hello", b: 33 };
+    console.log(newObj);    //  { a: "hello world", b: 33};
+    console.log(obj == newObj);   //  false
+    console.log(obj === newObj);  //  false
+
+    console.log("---------------------$.extend()---------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = $.extend(true, {}, obj);
+
+    newObj.a.a = "hello world";
+    // newObj.b = 99999999999
+
+    console.log(obj);    //  { a: "hello", b: 33 };
+    console.log(newObj);    //  { a: "hello world", b: 33 };
+    console.log(obj == newObj);   //  false
+    console.log(obj === newObj);  //  false
+
+    console.log("---------------------_.cloneDeep()---------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = _.cloneDeep(obj);
+
+    newObj.a.a = "hello world";
+    
+    console.log(obj);    //  { a: "hello", b: 33 };
+    console.log(newObj);    //  { a: "hello world", b: 33 };
+    console.log(obj == newObj);   //  false
+    console.log(obj === newObj);  //  false
+
+    console.log("---------------------自己实现深拷贝---------------------");
+
+    function deepClone(obj) {
+      if (typeof obj !== "object") return;
+      let newObj = obj instanceof Array ? [] : {};
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          newObj[key] = typeof obj[key] === "object" ? deepClone(obj[key]) : obj[key];
+        }
+      }
+      return newObj;
+    }
+    let obj1 = { a: 11, b: function () { }, c: { d: 22 } };
+    console.log(obj1);
+    console.log(deepClone(obj1));  // {a: 11, b: f(), c: {d: 22}};
+
+  </script>
+</body>
+
+</html>

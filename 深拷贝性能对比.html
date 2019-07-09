@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>深拷贝</title>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js"></script>
+</head>
+
+<body>
+  <script>
+
+    console.log("-----------------深拷贝一维数据结构用时对比--------------------")
+
+    var obj = [];
+    for (var i = 0; i < 100; i++) {
+      obj[i] = Math.random();
+    }
+    console.time("assign");
+    var newObj = Object.assign({}, obj); // 建议使用
+    console.timeEnd("assign");
+
+    console.time("JSON.parse(JSON.stringify())");
+    var newObj = JSON.parse(JSON.stringify(obj));
+    console.timeEnd("JSON.parse(JSON.stringify())");
+
+    console.time("$.extend");
+    var newObj = $.extend(true, {}, obj);
+    console.timeEnd("$.extend");
+
+    console.time("Loadsh.cloneDeep");
+    var newObj = _.cloneDeep(obj);
+    console.timeEnd("Loadsh.cloneDeep");
+
+    console.log("-----------------深拷贝二维数据结构用时对比--------------------")
+
+    var obj = [];
+    for (var i = 0; i < 100; i++) {
+      obj[i] = {};
+      for (var j = 0; j < 100; j++) {
+        obj[i][j] = Math.random();
+      }
+    }
+    console.time("JSON.parse(JSON.stringify())");
+    var newObj = JSON.parse(JSON.stringify(obj));    // 建议使用
+    console.timeEnd("JSON.parse(JSON.stringify())");
+
+    console.time("$.extend");
+    var newObj = $.extend(true, {}, obj);
+    console.timeEnd("$.extend");
+
+    console.time("Loadsh.cloneDeep");
+    var newObj = _.cloneDeep(obj);
+    console.timeEnd("Loadsh.cloneDeep");
+
+
+  </script>
+</body>
+
+</html>

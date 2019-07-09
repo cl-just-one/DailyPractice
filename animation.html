@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    
+    .animation {
+      width: 100px;
+      height: 100px;
+      position:relative;
+      background-color: red;
+      animation: mymove1 5s infinite;
+      -webkit-animation: mymove1 5s infinite;
+    }
+    @keyframes mymove {
+      from {top:0px;}
+      to {top:200px;}
+    }
+    @-webkit-keyframes mymove1 /*Safari and Chrome*/
+    {
+      from {left:0px;}
+      to {left:200px;}
+    }
+    .setTimeout1 {
+      width: 200px;
+      height: 100px;
+      background-color: #000;
+      color: #ffffff;
+    }
+    .e {
+      width: 200px;
+      height: 10px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="animation">我们几乎可以在所有的网站页面中找到超链接我们几乎可以在所有的网站页面中找到超链接我们几乎可以在所有的网站页面中找到超链接</div>
+  <!-- <div class="setTimeout1"></div> -->
+  <!-- <div class="e" id="e">我们几乎可以在所有的网站页面中找到超链接我们几乎可以在所有的网站页面中找到超链接我们几乎可以在所有的网站页面中找到超链接</div> -->
+
+  <script>
+    var arr = '我们几乎可以在所有的网站页面中找到超链接';
+    // var tmp = arr.split("");
+    // var abc = []
+    // var dom  = document.getElementsByClassName('setTimeout1')[0]
+    // setInterval(() => {
+    //   var a = Math.floor(Math.random() * 10 ) + 1;
+    //   abc.push(tmp[a])
+    //   dom.innerHTML = abc.join(',');
+    // }, 1000 / 60)
+
+    // var e = document.getElementById('e')
+    // var flag = true;
+    // var left = 0;
+    // setInterval(() => {
+    //     left == 0 ? flag = true : left == 100 ? flag = false : ''
+    //     flag ? e.style.left = ` ${left++}px` : e.style.left = ` ${left--}px`
+    // }, 1000 / 60)
+
+  </script>
+</body>
+</html>

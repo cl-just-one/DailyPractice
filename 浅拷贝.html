@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浅拷贝</title>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    console.log("--------------------newarr = arr---------------------------");
+
+    // var arr = [1, 2, 3];
+    var arr = {a: 10, b: 20}
+    var newarr = arr;
+
+    // newarr[0] = "one";
+    // arr[0] = "xxx";
+    arr.a = 100
+
+    console.log(arr);    //  ["one", 2, 3]
+    console.log(newarr);    //  ["one", 2, 3]
+    console.log(arr == newarr);   //  true
+    console.log(arr === newarr);  //  true
+
+    console.log("------------------Object.assign()-----------------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = Object.assign({}, obj);
+
+    // obj.a.a = "iiiiiiiii";
+    // obj.b = 99;
+    // newObj.a.a = "hello world";
+    newObj.b = 222;
+
+    console.log(obj);    //  { a: {a: "hello world"}, b: 33 };
+    console.log(newObj);    //  { a: {a: "hello world"}, b: 33 };
+    console.log(obj.a.a == newObj.a.a);   //  true
+    console.log(obj.a.a === newObj.a.a);  //  true
+    console.log(JSON.stringify(obj) === JSON.stringify(newObj));  //  true
+
+    // 判断对象是否相等
+    // var a = { a: {a: "hello world"}, b: 33 };
+    // var b = { a: {a: "hello world"}, b: 33 };
+    // console.log(JSON.stringify(a) === JSON.stringify(b));
+
+    console.log("-----------------------$.extend()---------------------------------");
+
+    var obj = { a: { a: "hello" }, b: 33 };
+    var newObj = $.extend({}, obj);
+
+    obj.a.a = "fffffffffffffffff";
+    obj.b = 999999999999999;
+    // newObj.a.a = "hello world";
+    // newObj.b = 888;
+
+    console.log(obj);    //  { a: {a: "hello world"}, b: 33 };
+    console.log(newObj);    //  { a: {a: "hello world"}, b: 33 };
+    console.log(obj.a.a == newObj.a.a);   //  true
+    console.log(obj.a.a === newObj.a.a);  //  true
+
+
+  </script>
+</body>
+
+</html>
