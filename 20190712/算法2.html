@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>整数反转</title>
+</head>
+<body>
+  <script>
+    // 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+    var reverse = function(x) {
+      var res = '';
+      if (x < 0) {
+        x = Math.abs(x);
+        res = '-';
+      }
+      var x = x.toString().split('').reverse().join('');
+      if (x < -Math.pow(2, 31) || x > Math.pow(2, 31) - 1) {
+          return 0;
+      } else {
+        x = Math.floor(x);
+      }
+      return res + x;
+    };
+    console.log(reverse(1234));
+    console.log(reverse(-1234));
+    console.log(reverse(120080000));
+    
+  </script>
+</body>
+</html>
