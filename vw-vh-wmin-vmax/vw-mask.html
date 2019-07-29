@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>hangge.com</title>
-        <style>
-            html, body, div, span, button {
-                margin: 0;
-                padding: 0;
-                border: 0;
-            }
 
-            button {
-                width: 120px;
-                height: 30px;
-                color: #FFFFFF;
-                font-family: "微软雅黑";
-                font-size: 14px;
-                background: #28B995;
-            }
+<head>
+  <meta charset="utf-8">
+  <title>hangge.com</title>
+  <style>
+    html,
+    body,
+    div,
+    span,
+    button {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
 
-            #mask {
-                width: 100vw;
-                height: 100vh;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background: #000000;
-                opacity: 0.5;
-                display: none;
-            }
-        </style>
-    </head>
-    <body>
-        <!--有时为了突出弹出框，或者避免页面元素被点击。我们需要一个覆盖整个可视区域的半透明遮罩，-->
-        <!--这个使用 vw、vh 就可以很轻易地实现。-->
-        <button onclick="document.getElementById('mask').style.display='inline'">点击显示遮罩</button>
-        <div id="mask" onclick="document.getElementById('mask').style.display='none'"/></div>
-    </body>
+    button {
+      width: 120px;
+      height: 30px;
+      color: #FFFFFF;
+      font-family: "微软雅黑";
+      font-size: 14px;
+      background: #28B995;
+    }
+
+    #mask {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #000000;
+      opacity: 0.5;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!--有时为了突出弹出框，或者避免页面元素被点击。我们需要一个覆盖整个可视区域的半透明遮罩，-->
+  <!--这个使用 vw、vh 就可以很轻易地实现。-->
+  <button onclick="document.getElementById('mask').style.display='inline'">点击显示遮罩</button>
+  <div id="mask" onclick="document.getElementById('mask').style.display='none'" />
+  </div>
+</body>
+
 </html>
