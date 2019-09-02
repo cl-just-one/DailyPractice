@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript之柯里化</title>
+</head>
+<body>
+  <script>
+    // 1.
+    // function currying (fn, ...args1) {
+    //   return function (...args2) {
+    //     return fn(...args1, ...args2);
+    //   }
+    // }  
+
+    // 2.
+    function currying (fn, ...args) {
+      if (args.length >= fn.length) {
+        return fn(...args);
+      }
+
+      return function (...args2) {
+        return currying(fn, ...args, ...args2);
+      }
+    }
+  </script>
+</body>
+</html>

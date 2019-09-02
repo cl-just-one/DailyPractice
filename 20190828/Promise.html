@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise</title>
+</head>
+
+<body>
+  <script>
+    // 例子 部分代码 不能运行
+    function runAsync() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行");
+          resolve("随便什么数据");
+        }, 2000)
+      });
+      return p;
+    }
+
+    // runAsync().then(function (res) {
+    //   console.log(res);
+    // });
+
+    function runAsync1() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行1");
+          resolve("随便什么数据1");
+        }, 2000)
+      });
+      return p;
+    }
+
+    function runAsync2() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行2");
+          resolve("随便什么数据2");
+        }, 2000)
+      });
+      return p;
+    }
+
+    function runAsync3() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行3");
+          resolve("随便什么数据3");
+        }, 2000)
+      });
+      return p;
+    }
+
+    function runAsync4() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行4");
+          resolve("随便什么数据4");
+        }, 2000)
+      });
+      return p;
+    }
+
+    function runAsync5() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行5");
+          resolve("随便什么数据5");
+        }, 3000)
+      });
+      return p;
+    }
+
+    function runAsync6() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行6");
+          resolve("随便什么数据6");
+        }, 1000)
+      });
+      return p;
+    }
+
+    function runAsync7() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("开始执行7");
+          resolve("随便什么数据7");
+        }, 2000)
+      });
+      return p;
+    }
+
+    // runAsync1().then(function (res) {
+    //   console.log(res);
+    //   return runAsync2();
+    // }, function (error) {
+    //   console.log(error);
+    //   return runAsync2();
+    // }).then(function (res) {
+    //   console.log(res);
+    //   return runAsync3();
+    // }).then(function (res) {
+    //   console.log(res);
+    //   return runAsync4();
+    // }).then(function (res) {
+    //   console.log(res);
+    // });
+
+    function getNumber() {
+      var p = new Promise(function (resolve, reject) {
+        //做一些异步操作
+        setTimeout(function () {
+          var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
+          if (num <= 5) {
+            resolve(num);
+          }
+          else {
+            reject('数字太大了');
+          }
+        }, 2000);
+      });
+      return p;
+    }
+
+    // getNumber().then(function (res) {
+    //   console.log("Resolve");
+    //   console.log(res);
+    //   console.log(somedata); //此处的somedata未定义
+    // }).catch(function (err) {
+    //   console.log("Rejected");
+    //   console.log(err);
+    // });
+
+    Promise.all([runAsync1(), runAsync2(), runAsync3()]).then(function (results) {
+      console.log(results);
+    });
+
+    Promise.race([runAsync5(), runAsync6(), runAsync7()]).then(function (results) {
+      console.log(results);
+    });
+
+  </script>
+</body>
+
+</html>
